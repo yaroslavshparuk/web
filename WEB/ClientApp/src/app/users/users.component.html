@@ -1,0 +1,27 @@
+<h1 id="tableLabel">My Contacts</h1>
+
+<ng-container *ngIf="users$ | async as users">
+  <p *ngIf="!users"><em>Loading...</em></p>
+
+  <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="users">
+    <thead>
+      <tr>
+        <th>Full Name</th>
+        <th>Phone</th>
+        <th>Age</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.fullName }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.age }}</td>
+        <td><a [routerLink]="['edit', user.id]">Edit</a></td>
+        <td><a [routerLink]="['edit', user.id]">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</ng-container>
